@@ -63,7 +63,7 @@ class PairwiseEuclideanDistance(pyspark.ml.pipeline.Transformer,
         rdd = dataset.select(self.getInputCol()).map(lambda r: r[0])
         rdd = rdd.zipWithIndex()
         df = rdd.toDF()
-        # Perform full outer join of dataframe 
+        # Perform Cartesian Product of dataframe 
         df = df.join(df)
         if self.getSquared():
             # Squared Euclidean distance
